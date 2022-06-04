@@ -1,2 +1,2 @@
 # odin-js
-A repository for my JaveScript lessons/challenges with The Odin Project
+A repository for my JavaScript lessons/challenges with The Odin Project
