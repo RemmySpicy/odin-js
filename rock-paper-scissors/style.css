@@ -1,0 +1,35 @@
+body {
+    max-height: 100vh;
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(40deg, rgb(166, 229, 84), rgb(278, 39, 197));
+}
+
+.display {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: aqua; */
+    font-size: 2rem;
+    text-align: center;
+    color: aliceblue;
+}
+
+button {
+    display: block;
+    margin: 100px auto;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    padding: 1em;
+    box-shadow: 0 0 3px 2px rgb(0 0 0 / .1);
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+}
