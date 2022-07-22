@@ -1,21 +1,65 @@
-const button = document.querySelector('button');
-const para = document.querySelector('p')
-// button.addEventListener('click', game)
+const options = document.querySelectorAll('.option');
+options.forEach(option => option.addEventListener('click', playRound))
+
+// Round result display
+const roundResult = document.querySelector('.round-result');
+
+// Get game score display
+const computerScore = document.querySelector('.comp-score');
+const playerScore = document.querySelector('.player-score');
+console.log(typeof computerScore)
+
+// Set current score value to display
+computerScore.textContent = 0;
+playerScore.textContent = 0;
 
 
+// Computer input logic
 function computerPlay() {
     let value = Math.floor(Math.random() * 3) + 1;
     return value === 1 ? 'Rock' :
         value === 2 ? 'Paper' : 'Scissors';
 }
 
-function playerSelection() {
-    return prompt('Input "Rock", "Paper" or "Scissors"', '').toLowerCase();
+
+let playerWin;
+let computerWin;
+
+
+function playRound(e) {
+    const ComputerSelection = computerPlay().toLowerCase();
+    const playerSelection = e.target.textContent.toLowerCase();
+    console.log(playerSelection, ', ', ComputerSelection);
+
+    // Game logic
+    // Reset round result display
+    roundResult.textContent = '';
+
+    if (ComputerSelection === 'rock') {
+        if (playerSelection === 'paper') {
+            playerWin = 1;
+            // roundResult.textContent = "You win!"
+        } else if (playerSelection === 'scissors') {
+            computerWin = 1;
+        } else {
+            roundResult.textContent = "it's a draw!"
+        }
+    }
+
+    if (ComputerSelection === 'paper') {
+        if (playerSelection === 'rock') {
+
+        }
+    }
+    
+    // ComputerSelection = 'scissors' ? : false;
+        
 }
 
-function playRound(playerSelection, ComputerSelection) {
-    let result = 'You Lose! Paper beats Rock'
-    document.write(result);
+if (playerWin) {
+    roundResult.textContent = "You win! player";
+} else if (computerWin) {
+    roundResult.textContent = 'You lose';
 }
 
 
@@ -24,7 +68,11 @@ function game() {
     return playRound(playerSelection(), computerPlay())
 }
 
-console.log(game())
+// console.log(game())
+
+// Paper covers rock! You win!
+// Rock breaks scissors!
+// Scissors cuts paper!
 
 
 
