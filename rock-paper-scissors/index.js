@@ -24,7 +24,7 @@ options.forEach(option => {
 resetBtn.addEventListener('click', () => console.log('clicked'));
 
 
-// Computer input logic
+// Computer input logic 
 function computerPlay() {
     // let value = Math.floor(Math.random() * 3) + 1;
     // return value === 1 ? 'Rock' :
