@@ -1,35 +1,103 @@
 body {
-    max-height: 100vh;
+    height: 100vh;
+    background-image: linear-gradient(to top right, #9e21b8, #ab30b5, #bf4cb2, #c759b1);
     font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .container {
-    max-width: 800px;
+    width: 600px;
+    background: #7562F8;
     margin: 0 auto;
-    background: linear-gradient(40deg, rgb(166, 229, 84), rgb(278, 39, 197));
+    /* padding-bottom: 3rem; */
+    border-radius: 1rem;
+    box-shadow: 0px 0px 15px 8px rgb(0 0 0 / 0.2);
 }
 
 .display {
     display: flex;
+    height: 150px;
     justify-content: space-evenly;
     align-items: center;
-    /* background-color: aqua; */
-    font-size: 2rem;
+    /* font-size: 1.5rem; */
     text-align: center;
-    color: aliceblue;
+    color: #ddd;
+}
+
+.score {
+    font-size: 3rem;
+    margin-bottom: -50px;
+}
+
+.display > * {
+    /* text-align: left; */
+}
+
+.round-result {
+    text-align: center;
+    font-size: 2rem;
 }
 
 button {
     display: block;
-    margin: 100px auto;
+    margin: 50px auto;
     font-size: 1.5rem;
     border: none;
     border-radius: 1rem;
-    padding: 1em;
+    padding: .5em 1em;
     box-shadow: 0 0 3px 2px rgb(0 0 0 / .1);
+    cursor: pointer;
+}
+
+.reset-btn {
+    /* display: block; */
+    margin-bottom: -30px;
 }
 
 .options {
     display: flex;
     justify-content: space-around;
+}
+
+.game-end {
+    position: absolute;
+    /* inset: 0; */
+    height: 1000vmax;
+    width: 1000vmax;
+    background-color: rgb(0 0 0 / .4);
+    
+    display: flex;
+    align-items: center;
+    transform: scale(0);
+    transition: transform 150ms ease-out;
+}
+
+.game-end .container {
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    border-radius: 1rem;
+    background-color: antiquewhite; 
+    /* box-shadow: 0px 0px 10px 2000vw rgb(0 0 0 / 0.5); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.reaction {
+    transform: scale(5);
+    /* height: 100%; */
+    padding-bottom: .5rem;
+}
+
+.game-result {
+    font-size: 2rem;
 }

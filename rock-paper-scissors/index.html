@@ -9,25 +9,45 @@
 </head>
 <body>
     <div class="container">
-        <button>Game</button>
         <div class="display">
             <div>
-                <p>Your Score</p>
-                <p class="player-score">0</p>
+                <h2>You</h2>
+                <p>Round Choice: </p>
+                <span class="player-round-choice"></span>
             </div>
+            <div>
+                <div>vs</div>
+                <span>Score:</span>
+                <div class="score">
+                    <span class="player-score">0</span>
+                    <span>:</span>
+                    <span class="comp-score">0</span>
+                </div>
+            </div>
+            <!-- <img src="vs.jpg" alt="VS"> -->
             <div class="computer">
-                <p>Computer Score</p>
-                <p class="comp-score">0</p>
+                <h2>Computer</h2>
+                <p>Round Choice:</p>
+                <span class="comp-round-choice"></span>
             </div>
         </div>
+        <p class="round-result">Select your move below to begin game</p>
         <div class="options">
             <button class="rock option">Rock</button>
             <button class="paper option">Paper</button>
             <button class="scissors option">Scissors</button>
         </div>
-        <p class="round-result"></p>
+        <!-- <button class="reset-btn">Start Game</button> -->
     </div>
-
+    <div class="game-end">
+        <div class="container">
+            <div>
+                <div class="reaction"></div>
+                <h3 class="game-result">You won the Game</h3>
+                <button class="reset-btn">Play Again</button>
+            </div>
+        </div>
+    </div>
 
     <script src="index.js"></script>
 </body>
