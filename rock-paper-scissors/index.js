@@ -22,7 +22,7 @@ const winRemarks =  [
     'Excellent work!', 'You are a Champ!'
 ];
 const lossRemarks = [
-    'Try harder next time!', 'Looserrrrr! 🤪', 'Ligma ⚽🤣'
+    'Better luck next time!', 'Looserrrrr! 🤪', 'Ligma ⚽⚽🤣'
 ];
 
 // Play round function call
@@ -32,7 +32,7 @@ options.forEach(option => {
             return option.querySelector('span')
             .textContent
             .toLowerCase();
-        }
+        };
 
 
         playRound(computerPlay(), playerPlay());
@@ -51,21 +51,14 @@ function computerPlay() {
     return choices[randomNum(choices)];
 }
 
-// function playerPlay(e) {
-//     // e.stopPropagation()
-//     const span;
-//     options.forEach(option => {
-//         option.addEventListener('click', () => {
-//             span = option.querySelector('span').textContent;
-//             // console.log(span)
-//             // return span.toLowerCase();
-//         })
-//     })
-//     console.log(span)
-//     // return e.target.textContent.toLowerCase();
-// } 
-
 function playRound(ComputerSelection, playerSelection) {
+
+    if (playerWins > 2 || computerWins > 2) {
+        gameEnd.style.transform = 'scale(1)';
+        return;
+    }
+
+
     console.log('player:', playerSelection, ', ', 'comp:', ComputerSelection);
     pRoundChoice.textContent = playerSelection.toUpperCase();
     cRoundChoice.textContent = ComputerSelection.toUpperCase();
@@ -141,9 +134,13 @@ function scoreIncrement(winner) {
         playerWins++;
     } else {
         computerWins++;
-        // winner = 'computer'
     }
     
+    // Show result again if player continue game without reset
+    if (playerWins > 4 || computerWins > 4) {
+        declareWin(winner);
+    }
+
     // Set current score value to display
     computerScore.textContent = computerWins;
     playerScore.textContent = playerWins;
@@ -151,31 +148,32 @@ function scoreIncrement(winner) {
     console.log('Player: ', playerWins)
     console.log('Comp: ', computerWins)
     
-    if (playerWins > 2 || computerWins > 2) {
-        console.log('We have a winner');
-        declareWin(winner);
-    }
 }
 
 function declareWin(winner) {
     gameEnd.style.transform = 'scale(1)';
+    gameEnd.style.opacity = '1';
     const reaction = document.querySelector('.reaction');
     const gameResult = document.querySelector('.game-result');
 
     if (winner === 'player') {
         reaction.textContent = winEmojis[randomNum(winEmojis)];
-        gameResult.innerHTML = `You won the game. <br> ${winRemarks[randomNum[winRemarks]]}`;
+        gameResult.innerHTML = `You won the game. <br> ${winRemarks[randomNum(winRemarks)]}`;
         console.log('The winner is:', winner)
     } else {
         reaction.textContent = loseEmojis[randomNum(loseEmojis)];
-        gameResult.innerHTML = `You lost the game. <br> ${lossRemarks[randomNum[lossRemarks]]}`;
+        gameResult.innerHTML = `You lost the game. <br> ${lossRemarks[randomNum(lossRemarks)]}`;
         console.log('The winner is:', winner)
     }
 }
 
 
 // Reset Game function call
-resetBtn.addEventListener('click', () => {
+resetBtn.addEventListener('click', resetGame);
+
+
+
+function resetGame() {
     playerWins = 0;
     computerWins = 0;
     playerScore.textContent = playerWins;
@@ -185,17 +183,12 @@ resetBtn.addEventListener('click', () => {
     roundResult.textContent = 'Select your move below to begin!';
    //  gameEnd.style.translateX = '100%';
     gameEnd.style.transform = 'scale(0)';
-    gameEnd.style.opacity = '1';
-});
+    gameEnd.style.opacity = '0';
+}
 
 
-
-// function resetGame() {
-//     // Set initial result display 
-//     console.log('clicked reset');
-//     roundResult.textContent = 'Select an option below to begin game';
-//     // gameEnd.style.translateX = '100%';
-//     gameEnd.style.transform = 'scale(0)';
-// }
-
-
+window.addEventListener('click', () => {
+    if (gameEnd.style.transform == 'scale(1)') {
+        gameEnd.style.transform = 'scale(0)';
+    }
+}, true)
