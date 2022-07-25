@@ -1,53 +1,74 @@
-// Round result display
 const roundResult = document.querySelector('.round-result');
-// Get game score display
 const computerScore = document.querySelector('.comp-score');
 const playerScore = document.querySelector('.player-score');
 const options = document.querySelectorAll('.option');
 const resetBtn = document.querySelector('.reset-btn');
+const gameEnd = document.querySelector('.game-end');
+const pRoundChoice = document.querySelector('.player-round-choice');
+const cRoundChoice = document.querySelector('.comp-round-choice')
+
 
 // win/loss displays
-const winEmojis = ['😁', '😎', '😋', '🤩', '🤪'];
-const loseEmojis = ['🤐', '😪', '😭', '😵', '🤕'];
+const winEmojis = ['😁', '😎', '😋', '🤩'];
+const loseEmojis = ['🤐', '😪', '😭', '🤕'];
 
 // score count
 let playerWins = 0;
 let computerWins = 0;
 
+// win/los remarks
+const winRemarks =  [
+    'You are da bomb! 💣', 'Good job my nigga', 'Haha, lucky you!', 'Guess who\'s proud? Mommy!',
+    'Excellent work!', 'You are a Champ!'
+];
+const lossRemarks = [
+    'Try harder next time!', 'Looserrrrr! 🤪', 'Ligma ⚽🤣'
+];
 
 // Play round function call
 options.forEach(option => {
-    option.addEventListener('click', game)
+    option.addEventListener('click', () => {
+        function playerPlay() {
+            return option.querySelector('span')
+            .textContent
+            .toLowerCase();
+        }
+
+
+        playRound(computerPlay(), playerPlay());
+    });
 });
 
-// Reset Game function call
-resetBtn.addEventListener('click', () => console.log('clicked'));
-
-
-// Computer input logic 
-function computerPlay() {
-    // let value = Math.floor(Math.random() * 3) + 1;
-    // return value === 1 ? 'Rock' :
-    // value === 2 ? 'Paper' : 'Scissors';
-
-    let choices = ['rock', 'paper', 'scissors'];
-    return choices[randomNum(choices)];
-}
 
 function randomNum(arr) {
     return Math.floor(Math.random() * arr.length)
 }
 
-function playerPlay(e) {
-    return e.target.textContent.toLowerCase();
+
+// Computer input logic 
+function computerPlay() {
+    let choices = ['rock', 'paper', 'scissors'];
+    return choices[randomNum(choices)];
 }
 
-function game(e) {
-    playRound(computerPlay(), playerPlay(e))
-} 
+// function playerPlay(e) {
+//     // e.stopPropagation()
+//     const span;
+//     options.forEach(option => {
+//         option.addEventListener('click', () => {
+//             span = option.querySelector('span').textContent;
+//             // console.log(span)
+//             // return span.toLowerCase();
+//         })
+//     })
+//     console.log(span)
+//     // return e.target.textContent.toLowerCase();
+// } 
 
 function playRound(ComputerSelection, playerSelection) {
     console.log('player:', playerSelection, ', ', 'comp:', ComputerSelection);
+    pRoundChoice.textContent = playerSelection.toUpperCase();
+    cRoundChoice.textContent = ComputerSelection.toUpperCase();
     
     
     // Game logic
@@ -126,38 +147,55 @@ function scoreIncrement(winner) {
     // Set current score value to display
     computerScore.textContent = computerWins;
     playerScore.textContent = playerWins;
+
     console.log('Player: ', playerWins)
     console.log('Comp: ', computerWins)
     
-    if (playerWins > 1 || computerWins > 1) {
+    if (playerWins > 2 || computerWins > 2) {
         console.log('We have a winner');
         declareWin(winner);
     }
 }
 
 function declareWin(winner) {
-    const gameEnd = document.querySelector('.game-end');
     gameEnd.style.transform = 'scale(1)';
-    const reaction = document.querySelector('.reaction')
+    const reaction = document.querySelector('.reaction');
     const gameResult = document.querySelector('.game-result');
 
     if (winner === 'player') {
         reaction.textContent = winEmojis[randomNum(winEmojis)];
-        gameResult.innerHTML = `You won the game. <br> You are a Champ!`;
+        gameResult.innerHTML = `You won the game. <br> ${winRemarks[randomNum[winRemarks]]}`;
         console.log('The winner is:', winner)
     } else {
         reaction.textContent = loseEmojis[randomNum(loseEmojis)];
-        gameResult.innerHTML = 'You lost the game. <br> Try harder next time!'
+        gameResult.innerHTML = `You lost the game. <br> ${lossRemarks[randomNum[lossRemarks]]}`;
         console.log('The winner is:', winner)
     }
 }
 
-function resetGame() {
+
+// Reset Game function call
+resetBtn.addEventListener('click', () => {
+    playerWins = 0;
+    computerWins = 0;
+    playerScore.textContent = playerWins;
+    computerScore.textContent = computerWins;
     // Set initial result display 
-    console.log('clicked')
-    roundResult.textContent = 'Select an option below to begin game';
-    // gameEnd.style.translateX = '100%';
+    console.log('clicked reset');
+    roundResult.textContent = 'Select your move below to begin!';
+   //  gameEnd.style.translateX = '100%';
     gameEnd.style.transform = 'scale(0)';
-}
+    gameEnd.style.opacity = '1';
+});
+
+
+
+// function resetGame() {
+//     // Set initial result display 
+//     console.log('clicked reset');
+//     roundResult.textContent = 'Select an option below to begin game';
+//     // gameEnd.style.translateX = '100%';
+//     gameEnd.style.transform = 'scale(0)';
+// }
 
 

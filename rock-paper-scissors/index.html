@@ -5,15 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Rock paper Scissors</title>
 </head>
 <body>
+    <header>
+        <h1>ROCK, PAPER, SCISSORS GAME</h1>
+        <p>First to 5 wins... good luck human.</p>
+    </header>
     <div class="container">
         <div class="display">
             <div>
-                <h2>You</h2>
-                <p>Round Choice: </p>
-                <span class="player-round-choice"></span>
+                <i class="fa-solid fa-user"></i>
+                <p>Your pick:</p>
+                <span class="player-round-choice picks"><b>. . .</b></span>
             </div>
             <div>
                 <div>vs</div>
@@ -26,16 +31,25 @@
             </div>
             <!-- <img src="vs.jpg" alt="VS"> -->
             <div class="computer">
-                <h2>Computer</h2>
-                <p>Round Choice:</p>
-                <span class="comp-round-choice"></span>
+                <i class="fa-solid fa-robot"></i>
+                <p>Bot pick: </p>
+                <span class="comp-round-choice picks"><b>. . .</b></span>
             </div>
         </div>
-        <p class="round-result">Select your move below to begin game</p>
+        <p class="round-result">Select your move below to begin!</p>
         <div class="options">
-            <button class="rock option">Rock</button>
-            <button class="paper option">Paper</button>
-            <button class="scissors option">Scissors</button>
+            <button class="rock option" data-value="rock">
+                <i class="fa-solid fa-hand-back-fist"></i>
+                <span>ROCK</span>
+            </button>
+            <button class="paper option">
+                <i class="fa-solid fa-hand"></i>
+                <span>PAPER</span>
+            </button>
+            <button class="scissors option">
+                <i class="fa-solid fa-hand-scissors"></i>
+                <span>SCISSORS</span>
+            </button>
         </div>
         <!-- <button class="reset-btn">Start Game</button> --> 
     </div>
