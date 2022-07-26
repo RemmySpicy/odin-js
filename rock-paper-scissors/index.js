@@ -7,12 +7,10 @@ const gameEnd = document.querySelector('.game-end');
 const pRoundChoice = document.querySelector('.player-round-choice');
 const cRoundChoice = document.querySelector('.comp-round-choice')
 
-// roundResult.addEventListener('change', () => this.style.transform = 'scale(1.1)')
-
 
 // win/loss displays
 const winEmojis = ['😁', '😎', '😋', '🤩'];
-const loseEmojis = ['🤐', '😪', '😭', '🤕'];
+const loseEmojis = ['😣', '😪', '☹', '🤕'];
 
 // score count
 let playerWins = 0;
@@ -41,11 +39,10 @@ options.forEach(option => {
     });
 });
 
-
+// Random number funtion
 function randomNum(arr) {
     return Math.floor(Math.random() * arr.length)
 }
-
 
 // Computer input logic 
 function computerPlay() {
@@ -152,6 +149,7 @@ function scoreIncrement(winner) {
     
 }
 
+// Pop up game end screen
 function declareWin(winner) {
     gameEnd.style.transform = 'scale(1)';
     gameEnd.style.opacity = '1';
@@ -169,11 +167,8 @@ function declareWin(winner) {
     }
 }
 
-
 // Reset Game function call
 resetBtn.addEventListener('click', resetGame);
-
-
 
 function resetGame() {
     playerWins = 0;
@@ -188,7 +183,7 @@ function resetGame() {
     gameEnd.style.opacity = '0';
 }
 
-
+// Remove pop up on window click
 window.addEventListener('click', () => {
     if (gameEnd.style.transform == 'scale(1)') {
         gameEnd.style.transform = 'scale(0)';
