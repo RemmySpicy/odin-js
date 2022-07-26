@@ -78,24 +78,21 @@ i {
 }
 
 .score {
-    font-size: 3rem;
-    margin-bottom: -30px;
+    font-size: 4rem;
+    margin-bottom: -40px;
 }
 
 .picks {
     font-size: 1.4rem;
     font-weight: bold;
     font-family: 'Mochiy Pop One', sans-serif;
-
 }
 
 .round-result {
     font-family: 'Edu NSW ACT Foundation', cursive;
     color: rgb(182, 153, 118);
-    /* color: white; */
     text-align: center;
     -webkit-text-stroke: 1px rgb(182, 153, 118);
-
 	text-shadow: 0px 4px 4px #282828;
     font-size: 2.5rem;
     font-weight: 700;
