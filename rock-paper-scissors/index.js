@@ -28,14 +28,8 @@ const lossRemarks = [
 // Play round function call
 options.forEach(option => {
     option.addEventListener('click', () => {
-        function playerPlay() {
-            return option.querySelector('span')
-            .textContent
-            .toLowerCase();
-        };
-
-
-        playRound(computerPlay(), playerPlay());
+        playRound(computerPlay(), playerPlay(option));
+        animateRoundResult();
     });
 });
 
@@ -50,80 +44,55 @@ function computerPlay() {
     return choices[randomNum(choices)];
 }
 
-function playRound(ComputerSelection, playerSelection) {
+// Player selection function
+function playerPlay(option) {
+    return option.querySelector('span')
+    .textContent
+    .toLowerCase();
+}
 
+// Gameplay function
+function playRound(ComputerSelection, playerSelection) {
     if (playerWins > 4 || computerWins > 4) {
         gameEnd.style.transform = 'scale(1)';
         return;
     }
-
-
+    // console logs for the sake of it
     console.log('player:', playerSelection, ', ', 'comp:', ComputerSelection);
+
+    //Set choices to display
     pRoundChoice.textContent = playerSelection.toUpperCase();
     cRoundChoice.textContent = ComputerSelection.toUpperCase();
-    
     
     // Game logic
     if (ComputerSelection === playerSelection) {
         roundResult.textContent = `It's a draw! You both choose ${playerSelection}`;
         return;
-    } else if (ComputerSelection === 'rock') {
-        if (playerSelection === 'paper') {
-            roundResult.textContent = 'You win! Paper covers rock';
-            scoreIncrement("player");
-            return;
-        } 
-        roundResult.textContent = 'You lose! Rock breaks scissors!';
-        scoreIncrement("computer");
+    } else if (ComputerSelection === 'rock' && playerSelection === 'paper') {
+        roundResult.textContent = 'You win! Paper covers Rock';
+        scoreIncrement('player');
         return;
-    } else if (ComputerSelection === 'paper') {
-        if (playerSelection === 'scissors') {
-            roundResult.textContent = 'You win! Scissors cuts paper!';
-            scoreIncrement("player");
-            return;
-        }
-        roundResult.textContent = 'You lose! Paper covers rock!';
-        scoreIncrement("computer");
+    } else if (ComputerSelection === 'rock' && playerSelection === 'scissors') {
+        roundResult.textContent = 'You lose! Rock breaks Scissors';
+        scoreIncrement('computer');
         return;
-    } else if (ComputerSelection === 'scissors') {
-        if (playerSelection === 'rock') {
-            roundResult.textContent = 'You win! Rock breaks scissors!';
-            scoreIncrement("player");
-            return;
-        }
-        roundResult.textContent = 'You lose! Scissors cuts paper!'
-        scoreIncrement("computer");
+    } else if (ComputerSelection === 'paper' && playerSelection === 'scissors') {
+        roundResult.textContent = 'You win! Scissors cuts Paper';
+        scoreIncrement('player');
+        return;
+    } else if (ComputerSelection === 'paper' && playerSelection === 'rock') {
+        roundResult.textContent = 'You lose! Paper covers Rock';
+        scoreIncrement('computer');
+        return;
+    } else if (ComputerSelection === 'scissors' && playerSelection === 'rock') {
+        roundResult.textContent = 'You win! Rock brakes Scissors';
+        scoreIncrement('player');
+        return;
+    } else if (ComputerSelection === 'scissors' && playerSelection === 'paper') {
+        roundResult.textContent = 'You lose! Scissors cuts Paper';
+        scoreIncrement('computer');
         return;
     }
-
-    // if (ComputerSelection === playerSelection) {
-        // roundResult.textContent = `It's a draw! You both choose ${playerSelection}`;
-        // return;
-    // } else if (ComputerSelection === 'rock' && playerSelection === 'paper') {
-    //     roundResult.textContent = 'You win! Paper covers rock';
-    //     scoreIncrement(playerWins);
-    //     return;
-    // } else if (ComputerSelection === 'rock' && playerSelection === 'scissors') {
-    //     roundResult.textContent = 'You lose! Rock breaks scissors';
-    //     scoreIncrement(computerWins);
-    //     return;
-    // } else if (ComputerSelection === 'paper' && playerSelection === 'scissors') {
-    //     roundResult.textContent = 'You win! Scissors cuts paper';
-    //     scoreIncrement(playerWins);
-    //     return;
-    // } else if (ComputerSelection === 'paper' && playerSelection === 'rock') {
-    //     roundResult.textContent = 'You lose! Paper covers rock';
-    //     scoreIncrement(computerWins);
-    //     return;
-    // } else if (ComputerSelection === 'scissors' && playerSelection === 'rock') {
-    //     roundResult.textContent = 'You win! Rock brakes scissors';
-    //     scoreIncrement(playerWins);
-    //     return;
-    // } else if (ComputerSelection === 'scissors' && playerSelection === 'paper') {
-    //     roundResult.textContent = 'You lose! Scissors cuts paper';
-    //     scoreIncrement(computerWins);
-    //     return;
-    // }
 
 }
 
@@ -144,9 +113,17 @@ function scoreIncrement(winner) {
     computerScore.textContent = computerWins;
     playerScore.textContent = playerWins;
 
+    // console logs for the sake of it
     console.log('Player: ', playerWins)
     console.log('Comp: ', computerWins)
-    
+}
+
+// Animate round result
+function animateRoundResult() {
+    roundResult.style.transform = 'scale(1.1)';
+    roundResult.addEventListener('transitionend', () => {
+        roundResult.style.transform = 'scale(1)';
+    })
 }
 
 // Pop up game end screen
@@ -170,6 +147,7 @@ function declareWin(winner) {
 // Reset Game function call
 resetBtn.addEventListener('click', resetGame);
 
+// Reset game function
 function resetGame() {
     playerWins = 0;
     computerWins = 0;
@@ -178,7 +156,6 @@ function resetGame() {
     // Set initial result display 
     console.log('clicked reset');
     roundResult.textContent = 'Select your move below to begin!';
-   //  gameEnd.style.translateX = '100%';
     gameEnd.style.transform = 'scale(0)';
     gameEnd.style.opacity = '0';
 }

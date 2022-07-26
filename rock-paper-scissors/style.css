@@ -116,7 +116,7 @@ i {
     font-weight: 700;
     margin-top: 0.2em;
     transform: scale(1);
-    transition: scale 100ms ease-in-out;
+    transition: transform 100ms ease-in-out;
 }
 
 button {
