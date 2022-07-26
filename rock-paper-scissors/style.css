@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap');
 
 body {
@@ -11,7 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    font-family: 'Oxygen', sans-serif;
+    font-family: cursive;
 }
 
 * {
@@ -24,15 +23,26 @@ header {
     right: 0;
     left: 0;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     line-height: .8;
-    text-shadow: 2px 2px 5px 2px blue;
     color: rgb(51, 49, 49);
 }
 
 header > h1 {
-    /* --webkit-text-stroke: 2px blue; */
-    text-shadow: 2px 2px 5px 2px blue;
+    /* text-shadow: -1px 1px 2px red,
+				  1px 1px 2px green,
+				  1px -1px 0 blue,
+				  -1px -1px 0 yellow; */
+    -webkit-text-stroke: 1px gray;
+    font-family: cursive;
+}
+
+header > p {
+    -webkit-text-stroke: .4px rgb(182, 153, 118);
+	/* text-shadow: -1px 1px 2px #23430C,
+				  1px 1px 2px #23430C,
+				  1px -1px 0 #23430C,
+				  -1px -1px 0 #23430C; */
 }
 
 .container {
@@ -82,12 +92,15 @@ i {
 .round-result {
     font-family: 'Edu NSW ACT Foundation', cursive;
     color: rgb(182, 153, 118);
+    /* color: white; */
     text-align: center;
-    text-shadow: 0px 0px 5px 8px black;
+    -webkit-text-stroke: 1px rgb(182, 153, 118);
+
+	text-shadow: 0px 4px 4px #282828;
     font-size: 2.5rem;
     font-weight: 700;
     margin-top: 0.4em;
-    transform: scale(1.1);
+    transform: scale(1);
     transition: scale 100ms ease-in-out;
 }
 
@@ -98,7 +111,8 @@ button {
     border: 2px solid #ddd;
     border-radius: .7rem;
     padding: .5em 1em;
-    box-shadow: 0 0 20px 3px rgba(210, 210, 210, 0.3);
+    /* box-shadow: 0 0 15px 3px rgba(210, 210, 210, 0.3); */
+    box-shadow: 0 0 20px 4px rgba(22, 22, 22, .6);
     cursor: pointer;
     transition: all 100ms ease-in-out
 }
@@ -165,7 +179,6 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* padding: 0; */
 }
 
 .reaction {
