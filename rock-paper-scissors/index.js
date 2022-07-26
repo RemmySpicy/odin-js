@@ -7,7 +7,7 @@ const gameEnd = document.querySelector('.game-end');
 const pRoundChoice = document.querySelector('.player-round-choice');
 const cRoundChoice = document.querySelector('.comp-round-choice')
 
-roundResult.addEventListener('change', () => this.style.transform = 'scale(1.1)')
+// roundResult.addEventListener('change', () => this.style.transform = 'scale(1.1)')
 
 
 // win/loss displays
