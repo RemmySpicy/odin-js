@@ -1,39 +1,73 @@
 const newInput = document.querySelector('.book-input');
 const bookList = document.querySelector('.book-list');
-const newBookBtn = document.querySelector('.new-book');
+const addBookBtn = document.querySelector('.add-book');
 
-let myLibrary = ['you can win', 'why ask why'];
+// const form = document.querySelector('form').addEventListener('submit', (e) => {e.preventDefault()})
 
-function Books (title, author, pages, hasRead) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.hasRead = hasRead
+let myLibrary = [];
+
+function Book(title, author, pages, hasRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.hasRead = hasRead;
     this.info = function() {
         return `$title by ${author}, ${pages} pages, ${hasRead}`
     }
 }
 
+// Add new book button
+addBookBtn.addEventListener('click', addBookToLibrary);
+
 function addBookToLibrary(library) {
-  library.push(newInput.value)
+    // e.preventDefault();
+
+    let newTitle = document.querySelector('.book-title').value;
+    let newAuthor = document.querySelector('.book-author').value;
+    let newPages = document.querySelector('.book-page').value;
+    let newHasRead = document.querySelector('input[name=has-read]:checked').defaultValue;
+
+    let newBook = new Book(newTitle, newAuthor, newPages, newHasRead);
+
+    library = myLibrary;
+    library.push(newBook)
+    displayBooks(library)
 }
 
 function displayBooks(arr) {
-    for (let item of arr) {
-        let p = document.createElement('p');
-        let button = document.createElement('button');
-        button.textContent = 'delete';
+    for (let i = arr.length - 1; i < arr.length; i++) {
 
-        p.textContent = item;
-        p.appendChild(button);
-        bookList.appendChild(p)
+        tbody = document.querySelector('tbody');
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+        <th> ${arr[i].title} </th>
+        <td> ${arr[i].author} </td>
+        <td> ${arr[i].pages} </td>
+        <td> <button class="delete-item">Delete</button> </td>
+        `;
+        tbody.appendChild(tr);
+        deleteItem()
     }
 }
 
-console.log(myLibrary)
-// displayBooks(myLibrary)
+function deleteItem() {
+    const deleteBtn = Array.from(document.querySelectorAll('.delete-item'));
 
-newBookBtn.addEventListener('click', displayBooks(myLibrary))
+    deleteBtn.forEach( item => {
+        item.addEventListener('click', () => {
+            item.remove(item.parentElement)
+        })
+    })
+}
+
+
+// deleteItem.addEventListener('click', () => {
+    // const tr = document.querySelectorAll('tr');
+    // deleteItem.parentElement.removeChild(tr)
+    // console.log('clicked')
+// })
+
+// addBookBtn.addEventListener('click', displayBooks(myLibrary))
 
 
 
