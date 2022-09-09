@@ -1,11 +1,9 @@
-const newInput = document.querySelector('.book-input');
-const bookList = document.querySelector('.book-list');
 const addBookBtn = document.querySelector('.add-book');
 
-// const form = document.querySelector('form').addEventListener('submit', (e) => {e.preventDefault()})
-
+// Book library
 let myLibrary = [];
 
+// Book constructor
 function Book(title, author, pages, hasRead) {
     this.title = title;
     this.author = author;
@@ -19,14 +17,14 @@ function Book(title, author, pages, hasRead) {
 // Add new book button
 addBookBtn.addEventListener('click', addBookToLibrary);
 
+// Add book function
 function addBookToLibrary(library) {
-    // e.preventDefault();
-
     let newTitle = document.querySelector('.book-title').value;
     let newAuthor = document.querySelector('.book-author').value;
     let newPages = document.querySelector('.book-page').value;
-    let newHasRead = document.querySelector('input[name=has-read]:checked').defaultValue;
+    let newHasRead = document.querySelector('input[name=has-read]:checked').value;
 
+    console.log(newHasRead)
     let newBook = new Book(newTitle, newAuthor, newPages, newHasRead);
 
     library = myLibrary;
@@ -34,10 +32,10 @@ function addBookToLibrary(library) {
     displayBooks(library)
 }
 
+const tbody = document.querySelector('tbody');
 function displayBooks(arr) {
     for (let i = arr.length - 1; i < arr.length; i++) {
 
-        tbody = document.querySelector('tbody');
         const tr = document.createElement('tr');
         tr.innerHTML = `
         <th> ${arr[i].title} </th>
@@ -46,8 +44,8 @@ function displayBooks(arr) {
         <td> <button class="delete-item">Delete</button> </td>
         `;
         tbody.appendChild(tr);
-        deleteItem()
     }
+    deleteItem()
 }
 
 function deleteItem() {
@@ -55,19 +53,12 @@ function deleteItem() {
 
     deleteBtn.forEach( item => {
         item.addEventListener('click', () => {
-            item.remove(item.parentElement)
+            tbody.removeChild(item.parentElement.parentElement)
         })
     })
 }
 
 
-// deleteItem.addEventListener('click', () => {
-    // const tr = document.querySelectorAll('tr');
-    // deleteItem.parentElement.removeChild(tr)
-    // console.log('clicked')
-// })
-
-// addBookBtn.addEventListener('click', displayBooks(myLibrary))
 
 
 
