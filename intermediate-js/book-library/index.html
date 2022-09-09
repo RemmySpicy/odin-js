@@ -10,46 +10,66 @@
 </head>
 <body>
     <div class="container">
-        <form action="">
-            <div class="form-group">
-                <label for="title">Book Title</label>
-                <input type="text" name="book" id="book" class="book-input">
-            </div>
-        
-            <div class="form-group">
-                <label for="author">Book Author</label>
-                <input type="text" name="book" id="author">
-            </div>
-            <div class="form-group">
-                <label for="pages">How Many Pages In The Book?</label>
-                <input type="text" name="book" id="pages">
-            </div>
-            <div class="form-group">
-                <fieldset>
-                    <legend>Have You Read The Book?</legend>
-                    <input type="radio" name="has-read" id="yes" value="yes">
-                    <label for="yes">Yes</label>
-                    <input type="radio" name="has-read" id="no" value="no">
-                    <label for="no">No</label>
-                </fieldset>
-            </div>
-            <button class="new-book">NEW BOOK</button>
-        </form>
-        <div class="book-list">
+        <div class="left">
+            <h1>Your Book Library</h1>
+            <p>Fill the form below to add a new book</p>
+
+            <form action="">
+                <div class="form-group">
+                    <label for="title">Book Title</label>
+                    <input type="text" name="book" id="book" class="book-input" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="author">Book Author</label>
+                    <input type="text" name="book" id="author" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pages">How Many Pages In The Book?</label>
+                    <input type="number" name="book" id="pages" required>
+                </div>
+
+                <div class="form-group">
+                    <fieldset>
+                        <legend>Have You Read The Book?</legend>
+            
+                        <label for="yes">
+                            <input type="radio" name="has-read" id="yes" value="yes" required>
+                            Yes
+                        </label>
+                        <label for="no">
+                            <input type="radio" name="has-read" id="no" value="no">
+                            No
+                        </label>
+                    </fieldset>
+                </div>
+                <button class="new-book">NEW BOOK</button>
+            </form>
+        </div>
+
+        <div class="right">
             <div class="book-table">
                 <table>
+                    <caption>book table</caption>
                     <thead>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Number of Pages</th>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Number of Pages</th>
+                        </tr>
                     </thead>
 
                     <tbody>
-                        <th>book</th>
-                        <tr>name</tr>
-                        <tr>pages</tr>
+                        <tr>
+                            <th>Aaa</th>
+                            <td>A.bb</td>
+                            <td>111</td>
+                        </tr>
                     </tbody>
                 </table>
+
+                <div class="book-list"></div>
             </div>
         </div>
     </div>

@@ -1,3 +1,7 @@
+:root {
+    --clr-main: ;
+}
+
 body {
     font-family: sans-serif;
 }
@@ -15,33 +19,51 @@ body {
     height: 100vh;
 }
 
-form {
-    width: 250px;
+.left {
+    padding: 1.5rem;
+    background-color: bisque;
+}
+
+h1 {
+    margin-bottom: 1.2rem;
 }
 
 .form-group, button {
     margin-top: 1rem;
 }
 
+label {
+    display: block;
+}
+
 input {
     width: 100%;
     padding: .5rem;
+    border-radius: 5px;
+    border: 1px solid #000;
 }
 
 input[type="radio"] {
-    /* display: flex; */
-    /* flex-direction: row; */
     width: max-content;
 }
+
+input[type="radio"]:nth-child(1) {
+    /* margin-bottom: 10px; */
+}
+
+
 
 form button {
     width: 100%;
     padding: .6rem;
+    border-radius: 5px;
+    border: 1px solid #000;
 }
 
 
-.book-list {
+.right {
     background-color: aliceblue;
+    padding: 1rem;
 }
 
 
