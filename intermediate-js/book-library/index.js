@@ -4,15 +4,30 @@ const addBookBtn = document.querySelector('.add-book');
 let myLibrary = [];
 
 // Book constructor
-function Book(title, author, pages, hasRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.hasRead = hasRead;
-    this.info = function() {
+class Book {
+    constructor(title, author, pages, hasRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.hasRead = hasRead;            
+    } 
+
+    info() {
         return `$title by ${author}, ${pages} pages, ${hasRead}`
     }
+
+    readStatus(library, index) {
+        // for (let i = 0; i < library.length; i++) {
+            if (library[index].hasRead == 'yes') {
+                console.log(`${this.title} been read`)
+                return "checked";
+            }
+            console.log(`${this.title} has not been read`)
+            
+        // }
+    }
 }
+
 
 // Add new book button
 addBookBtn.addEventListener('click', addBookToLibrary);
@@ -22,7 +37,7 @@ function addBookToLibrary(library) {
     let newTitle = document.querySelector('.book-title').value;
     let newAuthor = document.querySelector('.book-author').value;
     let newPages = document.querySelector('.book-page').value;
-    let newHasRead = document.querySelector('input[name=has-read]:checked').value;
+    let newHasRead = document.querySelector('input[name=has-read]:checked').value || undefined;
 
     console.log(newHasRead)
     let newBook = new Book(newTitle, newAuthor, newPages, newHasRead);
@@ -41,9 +56,12 @@ function displayBooks(arr) {
         <th> ${arr[i].title} </th>
         <td> ${arr[i].author} </td>
         <td> ${arr[i].pages} </td>
+        <td> <input type="checkbox" class="read-status" ${arr[i].readStatus(arr, i)}> </td>
         <td> <button class="delete-item">Delete</button> </td>
         `;
         tbody.appendChild(tr);
+        // arr.[`${arr[i]}`].hasRead(arr)
+        console.log(arr[i])
     }
     deleteItem()
 }
@@ -57,6 +75,7 @@ function deleteItem() {
         })
     })
 }
+
 
 
 
