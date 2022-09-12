@@ -17,20 +17,14 @@ class Book {
     }
 
     readStatus(library, index) {
-        // for (let i = 0; i < library.length; i++) {
-            if (library[index].hasRead == 'yes') {
-                console.log(`${this.title} been read`)
-                return "checked";
-            }
-            console.log(`${this.title} has not been read`)
-            
-        // }
+        if (library[index].hasRead == 'yes') {
+            console.log(`${this.title} been read`)
+            return "checked";
+        }
+        console.log(`${this.title} has not been read`)           
     }
 }
 
-
-// Add new book button
-// addBookBtn.addEventListener('click', addBookToLibrary);
 
 const form = document.querySelector('form');
 form.addEventListener('submit', addBookToLibrary)
@@ -67,21 +61,30 @@ function displayBooks(arr) {
         <td> <button class="delete-btn">Delete</button> </td>
         `;
         tbody.appendChild(tr);
-        // arr.[`${arr[i]}`].hasRead(arr)
         console.log(arr[i].info())
     }
-    deleteItem()
 }
 
-function deleteItem() {
-    const deleteBtn = Array.from(document.querySelectorAll('.delete-btn'));
+// Add click listener to table container element 
+tbody.addEventListener('click', deleteItem)
 
-    deleteBtn.forEach( item => {
-        item.addEventListener('click', () => {
-            tbody.removeChild(item.parentElement.parentElement)
-            deleteItem()
-        })
-    })
+function deleteItem(e) {
+
+    // when table item is clicked, check for secific class
+    if (e.target.classList.contains('delete-btn')) {
+        tbody.removeChild(e.target.parentElement.parentElement)    
+    }
+
+
+    // const deleteBtn = Array.from(document.querySelectorAll('.delete-btn'));
+
+    // deleteBtn.forEach( item => {
+    //     item.addEventListener('click', () => {
+    //         tbody.removeChild(item.parentElement.parentElement)
+    //         deleteItem()
+    //     })
+    // })
+
 }
 
 
