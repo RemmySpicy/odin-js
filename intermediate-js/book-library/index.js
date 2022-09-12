@@ -30,10 +30,15 @@ class Book {
 
 
 // Add new book button
-addBookBtn.addEventListener('click', addBookToLibrary);
+// addBookBtn.addEventListener('click', addBookToLibrary);
+
+const form = document.querySelector('form');
+form.addEventListener('submit', addBookToLibrary)
 
 // Add book function
-function addBookToLibrary(library) {
+function addBookToLibrary(e, library) {
+    e.preventDefault();
+
     let newTitle = document.querySelector('.book-title').value;
     let newAuthor = document.querySelector('.book-author').value;
     let newPages = document.querySelector('.book-page').value;
@@ -59,7 +64,7 @@ function displayBooks(arr) {
         <td> ${arr[i].author} </td>
         <td> ${arr[i].pages} </td>
         <td> <input type="checkbox" class="read-status" ${arr[i].readStatus(arr, i)}> </td>
-        <td> <button class="delete-item">Delete</button> </td>
+        <td> <button class="delete-btn">Delete</button> </td>
         `;
         tbody.appendChild(tr);
         // arr.[`${arr[i]}`].hasRead(arr)
@@ -69,7 +74,7 @@ function displayBooks(arr) {
 }
 
 function deleteItem() {
-    const deleteBtn = Array.from(document.querySelectorAll('.delete-item'));
+    const deleteBtn = Array.from(document.querySelectorAll('.delete-btn'));
 
     deleteBtn.forEach( item => {
         item.addEventListener('click', () => {
