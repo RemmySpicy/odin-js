@@ -13,7 +13,7 @@ class Book {
     } 
 
     info() {
-        return `$title by ${author}, ${pages} pages, ${hasRead}`
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasRead}`;
     }
 
     readStatus(library, index) {
@@ -39,6 +39,8 @@ function addBookToLibrary(library) {
     let newPages = document.querySelector('.book-page').value;
     let newHasRead = document.querySelector('input[name=has-read]:checked').value || undefined;
 
+    console.log({newTitle, newAuthor, newPages, newHasRead})
+
     console.log(newHasRead)
     let newBook = new Book(newTitle, newAuthor, newPages, newHasRead);
 
@@ -61,7 +63,7 @@ function displayBooks(arr) {
         `;
         tbody.appendChild(tr);
         // arr.[`${arr[i]}`].hasRead(arr)
-        console.log(arr[i])
+        console.log(arr[i].info())
     }
     deleteItem()
 }
@@ -72,6 +74,7 @@ function deleteItem() {
     deleteBtn.forEach( item => {
         item.addEventListener('click', () => {
             tbody.removeChild(item.parentElement.parentElement)
+            deleteItem()
         })
     })
 }
