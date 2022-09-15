@@ -1,4 +1,17 @@
+const form = document.querySelector('form');
 const addBookBtn = document.querySelector('.add-book');
+const tbody = document.querySelector('tbody');
+const filter = document.querySelector('.filter');
+
+
+// Book form sumbit event
+form.addEventListener('submit', addBookToLibrary)
+
+// Filter event
+filter.addEventListener('keyup', filterItems);
+
+// Book row deletion event 
+tbody.addEventListener('click', deleteItem)
 
 // Book library
 let myLibrary = [];
@@ -26,8 +39,6 @@ class Book {
 }
 
 
-const form = document.querySelector('form');
-form.addEventListener('submit', addBookToLibrary)
 
 // Add book function
 function addBookToLibrary(e, library) {
@@ -48,7 +59,6 @@ function addBookToLibrary(e, library) {
     displayBooks(library)
 }
 
-const tbody = document.querySelector('tbody');
 function displayBooks(arr) {
     for (let i = arr.length - 1; i < arr.length; i++) {
 
@@ -65,8 +75,6 @@ function displayBooks(arr) {
     }
 }
 
-// Add click listener to table container element 
-tbody.addEventListener('click', deleteItem)
 
 function deleteItem(e) {
 
@@ -89,7 +97,24 @@ function deleteItem(e) {
 
 
 
+// Filter Items
+function filterItems(e){
+    // convert text to lowercase
+    var text = e.target.value.toLowerCase();
 
+    // Get lis
+    var items = itemList.getElementsByTagName('li');
+
+    // Convert to an array
+    Array.from(items).forEach(function(item){
+        let itemName = item.firstChild.textContent;
+        if(itemName.toLowerCase().indexOf(text) != -1){
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
 
 
 
