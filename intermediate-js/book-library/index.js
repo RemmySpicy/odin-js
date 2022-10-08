@@ -8,7 +8,7 @@ const filter = document.querySelector('.filter');
 form.addEventListener('submit', addBookToLibrary)
 
 // Filter event
-filter.addEventListener('keyup', filterItems);
+// filter.addEventListener('keyup', filterItems);
 
 // Book row deletion event 
 tbody.addEventListener('click', deleteItem)
@@ -29,13 +29,12 @@ class Book {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasRead}`;
     }
 
-    readStatus(library, index) {
-        if (library[index].hasRead == 'yes') {
-            console.log(`${this.title} been read`)
-            return "checked";
-        }
-        console.log(`${this.title} has not been read`)           
-    }
+    readStatus = (library, index) => library[index].hasRead == 'yes' ? 'checked' : '';     
+
+    // readStatus(library, index) {
+    //     console.log(`${this.title} has ${library[index].hasRead == 'yes' ? '' : 'not'} been read`);
+    //     return library[index].hasRead == 'yes' ? 'checked' : '';           
+    // }
 }
 
 
@@ -47,11 +46,11 @@ function addBookToLibrary(e, library) {
     let newTitle = document.querySelector('.book-title').value;
     let newAuthor = document.querySelector('.book-author').value;
     let newPages = document.querySelector('.book-page').value;
-    let newHasRead = document.querySelector('input[name=has-read]:checked').value || undefined;
+    // let newHasRead = document.querySelector('input[name=has-read]:checked').value || undefined;
+    let newHasRead = document.querySelector('input[name=has-read]:checked').value;
 
-    console.log({newTitle, newAuthor, newPages, newHasRead})
+    // console.log({newTitle, newAuthor, newPages, newHasRead})
 
-    console.log(newHasRead)
     let newBook = new Book(newTitle, newAuthor, newPages, newHasRead);
 
     library = myLibrary;
@@ -60,6 +59,21 @@ function addBookToLibrary(e, library) {
 }
 
 function displayBooks(arr) {
+    // array.forEach((book, i) => {
+    //     const tr = document.createElement('tr');
+    //     console.log(book);
+    //     tr.innerHTML = `
+    //     <th> ${book.title} </th>
+    //     <td> ${book.author} </td>
+    //     <td> ${book.pages} </td>
+    //     <td> <input type="checkbox" class="read-status" ${book.readStatus(array, i)}> </td>
+    //     <td> <button class="delete-btn">Delete</button> </td>
+    //     `;
+    //     tbody.appendChild(tr);
+    //     // tbody.insertAdjacentElement("beforebegin", tr)
+    //     console.log(book.info())
+    // });
+
     for (let i = arr.length - 1; i < arr.length; i++) {
 
         const tr = document.createElement('tr');
@@ -70,7 +84,8 @@ function displayBooks(arr) {
         <td> <input type="checkbox" class="read-status" ${arr[i].readStatus(arr, i)}> </td>
         <td> <button class="delete-btn">Delete</button> </td>
         `;
-        tbody.appendChild(tr);
+        // tbody.appendChild(tr);
+        tbody.insertAdjacentElement("beforeend", tr)
         console.log(arr[i].info())
     }
 }
