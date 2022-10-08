@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 :root {
     --clr-main: ;
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.2;
 }
 
 *, 
@@ -15,17 +18,23 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: minmax(300px, 22%) 1fr;
+    grid-template-columns: minmax(300px, 23%) 1fr;
     height: 100vh;
 }
 
 .left {
     padding: 1.5rem;
-    background-color: bisque;
+    background-color: rgb(255, 180, 87);
+    font-size: 1rem
 }
 
 h1 {
     margin-bottom: 1.2rem;
+    font-size: 3rem;
+}
+
+p {
+    font-size: 1.3rem;
 }
 
 .form-group, button {
@@ -34,32 +43,46 @@ h1 {
 
 label {
     display: block;
+    margin-bottom: 2px;
 }
 
 input {
     width: 100%;
     padding: .5rem;
     border-radius: 5px;
-    border: 1px solid #000;
+    border: 1px solid #bbb;
+    font-size: inherit;
+}
+
+input:focus {
+    border: 1px solid teal;
+    outline: 1px solid teal;
 }
 
 input[type="radio"] {
     width: max-content;
-}
-
-input[type="radio"]:nth-of-type(1) {
-    /* margin-bottom: 100px; */
+    cursor: pointer;
+    margin-top: 5px;
 }
 
 form button {
     width: 100%;
-    padding: .6rem;
+    padding: .8rem;
     border-radius: 5px;
-    border: 1px solid #000;
+    border: none;
+    font-size: inherit;
+    background: teal;
+    color: #eee;
+    cursor: pointer;
+    transition: background 100ms ease-in-out;
+}
+
+form button:hover {
+    background-color: rgb(0, 82, 82);
 }
 
 .right {
-    background-color: aliceblue;
+    background-color: rgb(255, 227, 179);
     padding: 1rem;
 }
 
@@ -67,26 +90,58 @@ form button {
     /* max-width: 80%; */
 }
 
-/* table default */
+.book-table {
+    margin: 4rem auto 0;
+    width: 90%;
+    border-radius: .5rem;
+    background-color: aqua;
+}
+
   
 table {
+    display: block;
+    width: 100%;
     border-collapse: collapse;
-    border: 2px solid rgb(200,200,200);
-    letter-spacing: 1px;
-    font-size: 0.8rem;
+    letter-spacing: .5px;
+    overflow-x: auto;
+}
+
+caption {
+    display: block;
+    font-size: 2rem;
+    padding: 10px;
+}
+
+thead {
+    background-color: #222;
+    color: #eee;
+    padding: 1rem;
+}
+
+tbody {
+    display: block;
+    max-height: 60vh;
+    overflow: auto;
+}
+
+tbody th {
+    text-align: left;
+    width: 100px;
+    white-space: normal;
+}
+  
+
+tr {
+    border-bottom: 1px solid rgb(190,190,190);
+    width: 100%;
 }
   
 td, th {
-    border: 1px solid rgb(190,190,190);
-    padding: 10px 20px;
-}
-  
-th {
-    background-color: rgb(235,235,235);
+    padding: 10px;
 }
   
 td {
-    text-align: center;
+    /* text-align: center; */
 }
   
 tr:nth-child(even) td {
@@ -96,9 +151,23 @@ tr:nth-child(even) td {
 tr:nth-child(odd) td {
     background-color: rgb(245,245,245);
 }
-  
-caption {
-    padding: 10px;
+
+tr td:nth-last-child() {
+    background: blue;
 }
 
-/* table default end */
+.delete-btn {
+    margin: 0;
+    padding: .4rem .9rem;
+    color: rgb(221, 53, 53);
+    border: 1px solid rgb(221, 53, 53);
+    border-radius: 5px;
+    cursor: pointer;
+    background: transparent;
+    transition: all 100ms ease-in-out;
+}
+
+.delete-btn:hover {
+    background-color: rgb(255, 172, 172);
+    color: #000;
+}
