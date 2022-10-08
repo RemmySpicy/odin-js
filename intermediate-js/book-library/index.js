@@ -25,9 +25,7 @@ class Book {
         this.hasRead = hasRead;            
     } 
 
-    info() {
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasRead}`;
-    }
+    info = () => `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasRead}`;
 
     readStatus = (library, index) => library[index].hasRead == 'yes' ? 'checked' : '';     
 
