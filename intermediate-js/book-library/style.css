@@ -1,173 +1,176 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root {
-    --clr-main: ;
+  --clr-main: ;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.2;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.2;
 }
 
-*, 
-*::before, 
+*,
+*::before,
 *::after {
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: minmax(300px, 23%) 1fr;
-    height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(300px, 23%) 1fr;
+  height: 100vh;
 }
 
 .left {
-    padding: 1.5rem;
-    background-color: rgb(255, 180, 87);
-    font-size: 1rem
+  padding: 1.5rem;
+  background-color: rgb(255, 180, 87);
+  font-size: 1rem;
 }
 
 h1 {
-    margin-bottom: 1.2rem;
-    font-size: 3rem;
+  margin-bottom: 1.2rem;
+  font-size: 3rem;
 }
 
 p {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 
-.form-group, button {
-    margin-top: 1rem;
+.form-group,
+button {
+  margin-top: 1rem;
 }
 
 label {
-    display: block;
-    margin-bottom: 2px;
+  display: block;
+  margin-bottom: 2px;
 }
 
 input {
-    width: 100%;
-    padding: .5rem;
-    border-radius: 5px;
-    border: 1px solid #bbb;
-    font-size: inherit;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  font-size: inherit;
 }
 
-input:focus {
-    border: 1px solid teal;
-    outline: 1px solid teal;
+input:not([type=radio], [type=checkbox]):focus {
+  border: 1px solid teal;
+  outline: 1px solid teal;
 }
 
 input[type="radio"] {
-    width: max-content;
-    cursor: pointer;
-    margin-top: 5px;
+  width: max-content;
+  cursor: pointer;
+  margin-top: 5px;
 }
 
 form button {
-    width: 100%;
-    padding: .8rem;
-    border-radius: 5px;
-    border: none;
-    font-size: inherit;
-    background: teal;
-    color: #eee;
-    cursor: pointer;
-    transition: background 100ms ease-in-out;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  font-size: inherit;
+  background: teal;
+  color: #eee;
+  cursor: pointer;
+  transition: background 100ms ease-in-out;
 }
 
 form button:hover {
-    background-color: rgb(0, 82, 82);
+  background-color: rgb(0, 82, 82);
 }
-
 
 /* ===== Right ===== */
 
 .right {
-    background-color: rgb(255, 227, 179);
-    padding: 1rem;
+  background-color: rgb(255, 227, 179);
+  padding: 1rem;
 }
 
 .filter {
-    /* max-width: 80%; */
+  max-width: 80%;
 }
-
 
 /* ===== Table ===== */
 
 .book-table {
-    margin: 4rem auto 0;
-    width: 90%;
-    border-radius: .5rem;
-    background-color: aqua;
+  margin: 3rem auto 0;
+  width: 90%;
+  border-radius: 0.5rem;
+  background-color: rgb(128, 57, 57);
 }
 
-  
 table {
-    width: 100%;
-    border-collapse: collapse;
-    letter-spacing: .5px;
-    overflow-x: auto;
+  width: 100%;
+  border-collapse: collapse;
+  letter-spacing: 0.5px;
+  overflow-x: auto;
 }
 
 caption {
-    font-size: 2rem;
-    padding: 10px;
+  font-size: 1.5rem;
+  padding: 10px;
+  font-weight: bold;
 }
 
 thead {
-    background-color: #222;
-    color: #eee;
-    padding: 1rem;
-    text-align: left;
+  background-color: #222;
+  color: #eee;
+  padding: 1rem;
+  text-align: left;
 }
 
-tbody {
-    max-height: 60vh;
-    overflow: auto;
+.list {
+  display: block;
+  max-height: 60vh;
+  overflow: auto;
+}
+
+.list tr {
+  border-top: 1px solid rgb(190, 190, 190);
+  width: 100%;
+}
+
+td,
+th {
+  padding: 10px;
 }
 
 tbody th {
-    text-align: left;
-    width: 100px;
-    white-space: normal;
-}
-  
-
-tr {
-    border-bottom: 1px solid rgb(190,190,190);
-    width: 100%;
-}
-  
-td, th {
-    padding: 10px;
+  text-align: left;
+  width: 100px;
+  /* white-space: normal; */
 }
 
-  
 tr:nth-child(even) td {
-    background-color: rgb(250,250,250);
-}
-  
-tr:nth-child(odd) td {
-    background-color: rgb(234, 234, 234);
+  background-color: rgb(250, 250, 250);
 }
 
+tr:nth-child(odd) td {
+  background-color: rgb(234, 234, 234);
+}
 
 /* =====Table Delete Button ===== */
 
 .delete-btn {
-    margin: 0;
-    padding: .4rem .9rem;
-    color: rgb(221, 53, 53);
-    border: 1px solid rgb(221, 53, 53);
-    border-radius: 5px;
-    cursor: pointer;
-    background: transparent;
-    transition: all 100ms ease-in-out;
+  margin: 0;
+  padding: 0.4rem 0.9rem;
+  color: rgb(221, 53, 53);
+  border: 1px solid rgb(221, 53, 53);
+  border-radius: 5px;
+  cursor: pointer;
+  background: transparent;
+  transition: all 100ms ease-in-out;
 }
 
 .delete-btn:hover {
-    background-color: rgb(255, 172, 172);
-    color: #000;
+  background-color: rgb(255, 172, 172);
+  color: #000;
+}
+
+.delete-btn:active {
+  border: none;
+  outline: none;
 }
