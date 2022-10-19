@@ -167,6 +167,7 @@ tr:nth-child(odd) td, .tr:nth-child(odd) th {
 
 .delete-btn:hover {
   background-color: rgb(255, 172, 172);
+  border: 1px solid rgb(232, 124, 124);
   color: #000;
 }
 
